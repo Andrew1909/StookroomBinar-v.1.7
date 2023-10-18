@@ -1,0 +1,198 @@
+﻿<Application x:Class="StockroomBinar.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:StockroomBinar"
+             StartupUri="DialogWindow/SplashScreen.xaml">
+    <!--DialogWindow/SplashScreen.xaml-->
+    <!--MainWindow.xaml-->
+   
+    <Application.Resources>
+        
+        <ResourceDictionary>
+
+            <!--<Style TargetType="TextBlock">
+               
+                <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+            </Style>-->
+            <!--<Style TargetType="ComboBox">
+               
+                <Setter Property="Background" Value="Wheat"/>
+            </Style>-->
+
+
+            <Style TargetType="{x:Type TextBox}" x:Key="ModernText">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border CornerRadius="10" Background="White" Width="230" Height="40">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Поиск по цвету" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="11" Foreground="DarkGray">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type TextBox}" x:Key="AddCoils">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border CornerRadius="10" Background="White" Width="230" Height="40">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Введите кол-во катушек" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="11" Foreground="DarkGray">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type TextBox}" x:Key="AddColors">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border CornerRadius="10" Background="White" Width="230" Height="40">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"/>
+                                    <TextBox Margin="1" Text="{TemplateBinding Text}" BorderThickness="0" Background="Transparent" VerticalAlignment="Center" Padding="5" Foreground="Black" x:Name="SearchBox"/>
+                                    <TextBlock IsHitTestVisible="False" Text="Введите название цвета" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontSize="11" Foreground="DarkGray">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="7"/>
+            </Style>
+
+            <Style x:Key="MyWaterMarkStyle" TargetType="{x:Type TextBox}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            
+                            <Grid>
+                                <Border Background="White" BorderBrush="#FF7D8683" BorderThickness="1"/>
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
+                                <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"
+                               Visibility="Collapsed" Foreground="Gray" FontFamily="Arial"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="Text" Value=""/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Visibility" TargetName="WaterMarkLabel" Value="Visible"/>
+                                </MultiTrigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="DimGray"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
+            <Style x:Key="SearchBox" TargetType="{x:Type TextBox}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+
+                            <Grid>
+                                <Border Background="#464451" BorderBrush="#464451" BorderThickness="1"/>
+                                <Image x:Name="PicSearch" Source="Image/searchIco.png" Height="20" HorizontalAlignment="Left" Margin="5,0,0,0" Visibility="Collapsed" />
+                                <Line x:Name="LineSearch" HorizontalAlignment="Left" Margin="23,0,0,0" VerticalAlignment="Center"  StrokeThickness="1" X1="10" X2="10" Y1="0" Y2="20" Stroke="Gray" Visibility="Collapsed" />
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
+                                <Label  x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center" Margin="35,0,0,0" 
+                               Visibility="Collapsed" Foreground="Gray" FontFamily="Arial"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="Text" Value=""/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Visibility" TargetName="WaterMarkLabel" Value="Visible"/>
+                                    <Setter Property="Visibility" TargetName="PicSearch" Value="Visible"/>
+                                    <Setter Property="Visibility" TargetName="LineSearch" Value="Visible"/>
+                                </MultiTrigger>
+                                <Trigger Property="IsEnabled" Value="False" >
+                                    <Setter Property="Foreground" Value="DimGray"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="dd" TargetType="{x:Type ComboBox}">
+                <Setter Property="Background" Value="Red">
+                 
+                </Setter>
+            </Style>
+
+            <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBox}">
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="Padding" Value="4,1"/>
+                <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                <Setter Property="Background" Value="Yellow"/>
+                <!-- Custom value -->
+                <Setter Property="BorderBrush" Value="Yellow"/>
+                <!-- Custom value -->
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+
+            </Style>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,95 @@
+﻿<Page x:Class="StockroomBinar.Pages.PlasticStorage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StockroomBinar.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="740" d:DesignWidth="920"
+      Title="PlasticStorage" Background="#36393E" ShowsNavigationUI="False">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Image/plastik.png" Height="30"/>
+                <Label Content=" "/>
+                <TextBlock Text="Пластик на складе" FontSize="30" FontFamily="Candara Light" Foreground="White" Margin="0,0,0,0"/>
+            </StackPanel>
+            <Label Content=" " FontSize="1"/>
+            <StackPanel Orientation="Horizontal" >
+                <TextBox x:Name="SearchColor" Background="Transparent"  Style="{DynamicResource SearchBox}" Foreground="White" Tag="Поиск по названию цвета" Height="35" Width="300" HorizontalAlignment="Left" SelectionChanged="SearchColor_SelectionChanged">
+                   
+                </TextBox>
+                <Label Content=" " />
+                <ComboBox x:Name="PlastType" Width="200" Height="35" Background="#F5F5F5"  FontSize="15"  SelectionChanged="PlastType_SelectionChanged" Margin="0,0,10,0">
+                </ComboBox>
+
+                <ComboBox x:Name="PlastManufact" Width="210" Background="#F5F5F5"  FontSize="15" Height="35" SelectionChanged="PlastManufact_SelectionChanged" >
+                   
+                </ComboBox>
+                <!--</StackPanel>-->
+                    
+            </StackPanel>
+            <Label Content=" "/>
+           
+
+            <DataGrid Style="{DynamicResource MaterialDesignDataGrid}" CellStyle="{DynamicResource MaterialDesignDataGridCell}" x:Name="PlastitStoageView" AutoGenerateColumns="False" Height="510" Background="#F5F5F5" >
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="" Width="SizeToCells" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Ellipse Width="30" Height="30">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding Image}" Stretch="UniformToFill"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Название цвета" Binding="{Binding ColorName}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Тип платика" Binding="{Binding PlasticType}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Вес (кг)" Binding="{Binding Weight}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Кол-во катушек" Binding="{Binding NumberСoils}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Производитель" Binding="{Binding Manufacturer}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Заметки" Binding="{Binding Notes}" IsReadOnly="True"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <Button x:Name="Edit" Content="Редактировать" Click="Edit_Click" FontSize="11" Height="20" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#2F3136"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content=" " FontSize="5"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Cursor="" Width="780" Height="40">
+                <Button x:Name="AddPlatic" Width="195" Click="AddPlatic_Click" Cursor="Hand" Background="#202225" Height="40" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" Cursor="">
+                        <Image Source="../Image/plusplast.png" Margin="0,0,10,0"/>
+                        <TextBlock Text="Приемка пластика" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Label Content=" "/>
+                <Button Height="40" Width="195" Background="#202225" x:Name="ManufactInfo" Click="ManufactInfo_Click" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" Cursor="">
+                        <Image Source="../Image/manufacturerIco.png" Margin="-16,0,0,0"/>
+                        <TextBlock Text="О производителях" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Line HorizontalAlignment="Center" VerticalAlignment="Center"  StrokeThickness="1" X1="10" X2="10" Y1="0" Y2="40" Stroke="White" Margin="190,0,0,0" Cursor=""/>
+                <Button x:Name="PrintInfo" Width="140" Height="40" Click="PrintInfo_Click" Foreground="White" Style="{DynamicResource MaterialDesignFlatButton}" Margin="14,0,0,0" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="../Image/print.png" Height="30"/>
+                        <TextBlock Text="Печать" FontSize="15" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <!--</Border>-->
+            </StackPanel>
+            
+        <Frame x:Name="MyFrame"/>
+    </Grid>
+</Page>

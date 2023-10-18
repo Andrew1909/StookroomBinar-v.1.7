@@ -1,0 +1,57 @@
+﻿<Page x:Class="StockroomBinar.Pages.For3DPrintingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StockroomBinar.Pages"
+      mc:Ignorable="d" 
+ d:DesignHeight="740" d:DesignWidth="920"
+      Background="#36393E"
+      Title="For3DPrintingPage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Image/3dprinterIco.png" Height="30"/>
+                <Label Content=" "/>
+                <TextBlock Text="Для 3D принтеров" FontSize="30" FontFamily="Candara Light" Foreground="White" Margin="0,0,0,0"/>
+            </StackPanel>
+            <Label Content=" " FontSize="1"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="SearchColor" Background="Transparent"  Style="{DynamicResource SearchBox}" Foreground="White" Tag="Поиск по названию цвета" Height="35" Width="300" HorizontalAlignment="Left" SelectionChanged="SearchColor_SelectionChanged">
+
+                </TextBox>
+                <Label Content=" "/>
+                
+                <!--</StackPanel>-->
+
+            </StackPanel>
+            <Label Content=" "/>
+            <DataGrid Style="{DynamicResource MaterialDesignDataGrid}" CellStyle="{DynamicResource MaterialDesignDataGridCell}" x:Name="ForPrintView" AutoGenerateColumns="False" Height="510" Background="#F5F5F5" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Кол-во" Binding="{Binding Count}" />
+                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                    <!--<Button x:Name="Save" Click="Save_Click" Content="SAve"/>-->
+                                    <Button x:Name="Plus" Click="Plus_Click" FontSize="11" Height="20"  Background="#2F3136" BorderThickness="0">
+                                        <TextBlock Text="+" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button>
+                                    <Label Content=" "/>
+                                    <Button x:Name="Minus" Click="Minus_Click" FontSize="11" Height="20" Background="#2F3136" BorderThickness="0">
+                                        <TextBlock Text="-" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Button>
+                                </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+            <Button x:Name="AddItem" Content="+ Добавить" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="White" HorizontalAlignment="Left"  FontSize="15" Margin="0,20,0,0" Click="AddItem_Click"/>
+        </StackPanel>
+        
+
+    </Grid>
+</Page>

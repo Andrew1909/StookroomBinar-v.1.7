@@ -1,0 +1,118 @@
+﻿<Page x:Class="StockroomBinar.Pages.StatisticsOnOrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StockroomBinar.Pages"
+      mc:Ignorable="d" 
+ d:DesignHeight="740" d:DesignWidth="920"
+      Background="#36393E"
+      Title="StatisticsOnOrdersPage">
+
+    <Grid>
+         <Image gif:ImageBehavior.AnimatedSource="../Image/HTjDz.gif" Visibility="Hidden" x:Name="Fire"/>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../Image/postavki.png" Height="50"/>
+                    <StackPanel Orientation="Vertical"  Margin="4,0,0,0">
+                        <TextBlock Text="Общая статисктика" FontSize="30" Margin="0,0,0,-15" Foreground="White"/>
+                        <TextBlock Text="по поставкам" FontSize="25" Foreground="White" />
+                    </StackPanel>
+                    <Button x:Name="AddDeliver" Content=" Добавить поставку" BorderThickness="0" Height="40" Background="#202225" Width="200" HorizontalAlignment="Right" Click="AddDeliver_Click" Margin="390,3,0,0"/>
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Border Width="300" Height="160" Margin="2,3,4,4" Padding="3" Background="#464451" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="0">
+                    <StackPanel Orientation="Horizontal" Margin="40,40,40,30">
+                        <TextBlock Text="26" x:Name="CountDeliver" FontSize="50" Foreground="White" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="15,0,0,0">
+                            <TextBlock Text="Поставок" FontSize="20" Foreground="White"/>
+                            <TextBlock Text="в этом месяце" FontSize="20" Foreground="White"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Width="300" Height="160" Margin="2,3,0,4"  Padding="3" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="0">
+                    <StackPanel Orientation="Horizontal" Margin="40,40,40,30">
+                        <TextBlock Text="26" x:Name="AllDeliverCount" FontSize="50" Foreground="White" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="15,0,0,0">
+                            <TextBlock Text="Поставок" FontSize="20" Foreground="White"/>
+                            <TextBlock Text="запланировано" FontSize="20" Foreground="White"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </Border>
+                <Border Width="300" Height="160" Margin="2,3,0,4" Padding="3" Background="#464451" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="0">
+                    <StackPanel Orientation="Horizontal" Margin="40,40,40,30">
+                        <TextBlock Text="26" x:Name="countDiliverTodey" FontSize="50" Foreground="White" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="15,0,0,0">
+                            <TextBlock Text="Отгрузок " FontSize="20" Foreground="White"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="на " FontSize="20" Foreground="White"/>
+                                <TextBlock x:Name="DataToday" FontSize="20" Foreground="White"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,9">
+                <StackPanel Orientation="Vertical" >
+                    <TextBox x:Name="SearchCustomerName" Background="Transparent"  Style="{DynamicResource SearchBox}" Foreground="White" Tag="Поиск по заказчику" Height="35" Width="300" HorizontalAlignment="Left" SelectionChanged="SearchCustomerName_SelectionChanged" Margin="0,0,0,10"/>
+                    <ListView x:Name="DeliversView"  Foreground="White" Height="400" Width="420">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                                    <StackPanel Orientation="Vertical" Height="auto" Width="250" >
+                                        <TextBlock Text="{Binding СustomerТame}"  TextWrapping="Wrap" FontSize="20" TextDecorations="Underline"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Дата отгрузки: "/>
+                                            <TextBlock Text="{Binding DateEdit}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Процент готовности: "  Foreground="{Binding ReadyColor}"/>
+                                            <TextBlock x:Name="NumbreReadyProcent" Text="{Binding Status}" Foreground="{Binding ReadyColor}"/>
+                                            <TextBlock Text="%"  Foreground="{Binding ReadyColor}"/>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Label Content=" "/>
+                                        <Label Content=" "/>
+                                        <Label Content=" "/>
+                                        <Button x:Name="LockInfoNatif" Click="LockInfoNatif_Click" Height="40" Width="110" Content="Подробнее" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#202225" Background="White" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="40,0,0,0">
+                    <TextBlock Text="Общая статистика:" FontSize="20" Foreground="White" Margin="0,5,0,10"/>
+                    <DataGrid Style="{DynamicResource MaterialDesignDataGrid}" Background="#464451" CellStyle="{DynamicResource MaterialDesignDataGridCell}" x:Name="StatisticOrdersView" AutoGenerateColumns="False" Height="400" Width="450"  HorizontalAlignment="Left">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Binding="{Binding NameDitales}" IsReadOnly="True" Foreground="White"/>
+                        <DataGridTextColumn Header="Имеется" Binding="{Binding ReadyCount}" IsReadOnly="True" Foreground="White"/>
+                        <DataGridTextColumn Header="Необходимо" Binding="{Binding NeseseryCount}" IsReadOnly="True" Foreground="White"/>
+                        <!--<DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                <Button x:Name="Save" Content="Сохранить" Click="Save_Click" FontSize="11" Height="20" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#2F3136"/>
+                            </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>-->
+                    </DataGrid.Columns>
+                </DataGrid>
+                </StackPanel>
+                
+                
+                
+            </StackPanel>
+            <!--<Button x:Name="AddDeliver" Content=" Добавить поставку" BorderThickness="0" Background="#202225" Width="200" HorizontalAlignment="Right" Click="AddDeliver_Click" Margin="0,3,0,0"/>-->
+        </StackPanel>
+        <Frame x:Name="MyFrame"/>
+    </Grid>
+</Page>

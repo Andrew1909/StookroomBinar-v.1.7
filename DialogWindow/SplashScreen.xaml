@@ -1,0 +1,24 @@
+﻿<Window x:Class="StockroomBinar.DialogWindow.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="SplashScreen" Height="400" Width="400"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="{x:Null}" ContentRendered="Window_ContentRendered">
+    <Grid>
+        <materialDesign:Card UniformCornerRadius="15" Background="Transparent" materialDesign:ShadowAssist.ShadowDepth="Depth4" Margin="25">
+            <Grid>
+                <StackPanel  Orientation="Vertical">
+                    <Image Source="../Image/LogoBinar.png" Height="100" Width="100"/>
+                    <ProgressBar x:Name="progressBar" Value="0" Height="5" Width="280" IsIndeterminate="True" Background="White"/>
+                </StackPanel>
+                <Frame x:Name="MyFrame"/>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Window>

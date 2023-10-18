@@ -1,0 +1,49 @@
+﻿<Page x:Class="StockroomBinar.Pages.Print3DProfilsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StockroomBinar.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="740" d:DesignWidth="920"
+ Background="#36393E" ShowsNavigationUI="False"
+      Title="Print3DProfilsPage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" >
+            <TextBlock Text="Профили для 3D печати" FontSize="30" FontFamily="Candara Light" Foreground="White" Margin="0,0,0,10"/>
+            <TextBox  Height="35" Width="300" Foreground="White" Tag="Поиск по названию профиля" x:Name="Search" SelectionChanged="Search_SelectionChanged" HorizontalAlignment="Left" Margin="50,0,0,10" Style="{StaticResource SearchBox}"/>
+
+            <ListView x:Name="PrintProfilsView"  Foreground="White" Height="545" Width="734">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Height="auto" Padding="1" Background="#464451"  HorizontalAlignment="Center" CornerRadius="7" Width="auto">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Background="{Binding ViewColor}" Cursor="" MinHeight="40">
+                                <Image Source="../Image/filePic.png" Height="30"/>
+                                <StackPanel Orientation="Vertical" Margin="10,0,10,0" Width="300">
+                                    <TextBlock Text="{Binding NameProfile}" FontSize="19" TextWrapping="Wrap"/>
+                                    <!--<TextBlock Text="{Binding Materials}" FontSize="15"/>-->
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Открыть" Height="30" Width="100" Background="#202225" BorderThickness="0" Foreground="White" Click="OpenFile_Click" Name="OpenFile" Margin="12,0,10,0"/>
+                                    <Button Content="Удалить" Height="30" Width="100" Background="#202225" BorderThickness="0" Foreground="White" Click="DeleteFile_Click" Name="DeleteFile"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="AddNewProfile" Content="+ Добавить профиль" Style="{DynamicResource MaterialDesignFlatButton}" Click="AddNewProfile_Click" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Margin="0,20,10,0"/>
+        </StackPanel>
+        <Frame x:Name="MyFrame"/>
+        <!--<Button x:Name="AddNewNameDitales"  Background="#202225" Height="45" Width="300">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Image/filePic.png" VerticalAlignment="Center"/>
+                <Label Content=" "/>
+                <TextBlock Text="Открыть папку с профилями" VerticalAlignment="Center" FontSize="15"/>
+            </StackPanel>
+
+        </Button>-->
+    </Grid>
+</Page>

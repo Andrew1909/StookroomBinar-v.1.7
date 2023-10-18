@@ -1,0 +1,60 @@
+﻿<Page x:Class="StockroomBinar.Pages.DefectiveCoilsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StockroomBinar.Pages"
+      mc:Ignorable="d" 
+     d:DesignHeight="740" d:DesignWidth="920"
+ Background="#36393E"
+      Title="DefectiveCoilsPage">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Бракованный пластик" FontSize="30" FontFamily="Candara Light" Foreground="White" Margin="0,0,0,0"/>
+            </StackPanel>
+            <Label Content=" " FontSize="1"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="SearchColor" Background="Transparent"  Style="{DynamicResource SearchBox}" Foreground="White" Tag="Поиск по названию цвета" Height="35" Width="300" HorizontalAlignment="Left" SelectionChanged="SearchColor_SelectionChanged">
+
+                </TextBox>
+                <Label Content=" "/>
+                <ComboBox x:Name="PlastType" Width="200" Height="35" Background="#F5F5F5"  FontSize="15"  SelectionChanged="PlastType_SelectionChanged" Margin="0,0,10,0">
+                </ComboBox>
+
+                <ComboBox x:Name="PlastManufact" Width="210" Background="#F5F5F5"  FontSize="15" Height="35" SelectionChanged="PlastManufact_SelectionChanged" >
+
+                </ComboBox>
+                <!--</StackPanel>-->
+
+            </StackPanel>
+            <Label Content=" "/>
+            <DataGrid Style="{DynamicResource MaterialDesignDataGrid}" CellStyle="{DynamicResource MaterialDesignDataGridCell}" x:Name="PlastitDefectiveView" AutoGenerateColumns="False" Height="510">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название цвета" Binding="{Binding ColorName}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Тип платика" Binding="{Binding PlasticType}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Кол-во катушек" Binding="{Binding NumberСoils}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Вес" Binding="{Binding Weight}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Производитель" Binding="{Binding Manufacturer}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Тип платика" Binding="{Binding DefectiveType}" IsReadOnly="True"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <CheckBox x:Name="AddRecyclingName" Checked="AddRecyclingName_Checked" Unchecked="AddRecyclingName_Unchecked" IsChecked="{Binding StatusRecucling}" Background="#202225"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content=" "/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="RecyclingNameDel" BorderThickness="0" Content="Отправить на переработку" Height="30" Width="210" Click="RecyclingNameDel_Click" Background="#202225"/>
+                <Label Content=" "/>
+                <!--<Button Content="Выбрать все" Style="{DynamicResource MaterialDesignFlatButton}" Height="30" Width="170" Foreground="White"/>-->
+            </StackPanel>
+        </StackPanel>
+        <Frame x:Name="MyFrame"/>
+    </Grid>
+</Page>

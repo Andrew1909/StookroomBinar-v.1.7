@@ -1,0 +1,88 @@
+
+nutification
+public string NatitficationOne
+        {
+            get
+            {
+                if (Descriptiont != null) return Descriptiont;
+                return null;
+            }
+        }
+
+
+
+deliveres
+ public string ReadyColor
+        {
+            get
+            {
+                if (Status == 100) return "Green";
+                return "White";
+            }
+        }
+ public string DateEdit
+        {
+            get
+            {
+                if (СustomerТame != null)
+                {
+                    return (Date.Value.Date.ToShortDateString()).ToString();
+                }
+                return Date.ToString();
+                
+            }
+        }
+
+
+
+PlasticProducts
+ public string SumWeight
+        {
+            get
+            {
+                if (SupportsWeight != null) return (SupportsWeight + ProductWeight).ToString();
+                return ProductWeight.ToString();
+            }
+        }
+
+IDManufacturer
+
+ public string SiteVisibleButton
+        {
+            get
+            {
+                if (Site != null) return "Visible";
+                return "Hidden";
+            }
+        }
+
+        public string SpeedColor
+        {
+            get
+            {
+                if (SpeedDeliver == "Быстро") return "Green";
+                if (SpeedDeliver == "Нормально") return "Yellow";
+                if (SpeedDeliver == "Долго") return "Red";
+                return "White";
+            }
+        }
+
+        public string ViewColor
+        {
+            get
+            {
+                if (IDInside % 2 == 0) return "#464451";
+                return "Grey";
+            }
+        }
+
+NotesUser
+
+public string DecorateNotes
+        {
+            get
+            {
+                if(Status==false) return "none";
+                return "Strikethrough";
+            }
+        }
